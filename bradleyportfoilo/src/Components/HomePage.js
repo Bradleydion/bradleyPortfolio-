@@ -1,7 +1,9 @@
 import { ClassNames } from "@emotion/react";
 import {
+  Button,
   Card,
   CardMedia,
+  Container,
   ImageList,
   ImageListItem,
   Paper,
@@ -10,12 +12,14 @@ import {
 import { Box, Stack } from "@mui/system";
 import React from "react";
 import profilePicture from "../Assets/Profilepage.JPG";
+import FormDialog from "./Contact";
+import Portfolio from "./Portfolio";
 
 export default function HomePage() {
   return (
-    <Box>
+    <Container maxWidth="lg">
       <Stack mt={8} direction="row" justifyContent="center" alignItems="center">
-        <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
+        <ImageList sx={{ width: 250, height: 500 }} cols={1} rowHeight={164}>
           <ImageListItem>
             <img
               src={`${profilePicture}`}
@@ -26,9 +30,9 @@ export default function HomePage() {
           </ImageListItem>
         </ImageList>
       </Stack>
-      <Stack mt={2}>
-        <Paper>
-          <Typography variant="h1">Welcome to The Bradley Project!</Typography>
+      <Paper>
+        <Typography variant="h1">Welcome to The Bradley Project!</Typography>
+        <Container maxWidth={"md"}>
           <Typography variant="paragraph">
             Here at The Bradley Project website, you get a constant glimpse at
             projects I am working on. But first let me introduce myself. Hi, Im
@@ -47,9 +51,11 @@ export default function HomePage() {
             open and accepting website design request and am looking for the
             next step in my career.
           </Typography>
-          <Typography variant="h3">
-            What does The Bradley Project Mean?
-          </Typography>
+        </Container>
+        <Typography variant="h3">
+          What does The Bradley Project Mean?
+        </Typography>
+        <Container maxWidth={"md"} mb={4}>
           <Typography variant="paragraph">
             For as long as I can remember, I have always considered myself a
             work in project. Just like everyone else, I am learning new ways to
@@ -64,8 +70,10 @@ export default function HomePage() {
             the time and energy and am always interested in constructive
             feedback to help me better myself and grow.
           </Typography>
-        </Paper>
-      </Stack>
-    </Box>
+        </Container>
+      </Paper>
+      <Portfolio />
+      <FormDialog />
+    </Container>
   );
 }

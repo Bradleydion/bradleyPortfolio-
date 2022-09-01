@@ -7,7 +7,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 
-const pages = [<Link to="/">Home</Link>, "Portfolio", "Blog", "Contact"];
+const pages = [<Link to="/">Home</Link>, "Blog", "Admin Login"];
 const theme = createTheme({
   palette: {
     primary: {
