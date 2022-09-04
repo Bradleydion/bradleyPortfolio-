@@ -12,6 +12,8 @@ import { Box, Stack } from "@mui/system";
 import React from "react";
 import profilePicture from "../Assets/PSwebsite.png";
 import review from "../Assets/review.png";
+import chuckles from "../Assets/chuckles.png";
+import ReviewCaseStudy from "./Casestudies/Review";
 
 export default function Portfolio() {
   return (
@@ -19,7 +21,7 @@ export default function Portfolio() {
       <Paper>
         <Typography variant="h1"> Projects</Typography>
         <Box sx={{ maxWidth: 1280 }}>
-          <ImageList sx={{ width: 700, height: 500 }}>
+          <ImageList sx={{ width: 800, height: 500 }} cols={3}>
             <ImageListItem>
               <img
                 src={profilePicture}
@@ -39,8 +41,17 @@ export default function Portfolio() {
                 alt={"CRM Project"}
                 loading="lazy"
               />
+              <ReviewCaseStudy />
+            </ImageListItem>
+            <ImageListItem>
+              <img
+                src={chuckles}
+                srcSet={chuckles}
+                alt={"Chuckles"}
+                loading="lazy"
+              />
               <ImageListItemBar
-                title={"Review"}
+                title={"Working Title"}
                 actionIcon={<Button variant="contained">Case Study</Button>}
               />
             </ImageListItem>

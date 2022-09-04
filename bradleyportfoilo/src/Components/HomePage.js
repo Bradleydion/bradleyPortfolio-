@@ -12,6 +12,7 @@ import {
 import { Box, Stack } from "@mui/system";
 import React from "react";
 import profilePicture from "../Assets/Profilepage.JPG";
+import Art from "./Art";
 import FormDialog from "./Contact";
 import Portfolio from "./Portfolio";
 
@@ -73,6 +74,7 @@ export default function HomePage() {
         </Container>
       </Paper>
       <Portfolio />
+      <Art />
       <FormDialog />
     </Container>
   );
