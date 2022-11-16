@@ -7,10 +7,15 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Box, Stack } from "@mui/system";
-import { Container, Paper, Typography } from "@mui/material";
+import { Container, Fab, Paper } from "@mui/material";
 
-export default function FormDialog() {
+export default function BlogPost() {
   const [open, setOpen] = React.useState(false);
+  const aPost = {
+    title: "",
+    body: "",
+  };
+  const [blogPost, setBlogPost] = React.useState(aPost);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -24,50 +29,33 @@ export default function FormDialog() {
     <div>
       <Stack mt={8}>
         <Paper>
-          <Box sx={{ maWidth: 275 }}>
-            <Container maxWidth={"md"}>
-              <Typography variant="h2">Contact me</Typography>
-              <Typography>
-                If you are interested in having a website
-                developed,maintained,or for creative consultation, I am looking
-                for freelance work. For a custom quote please tap the contact
-                button bellow!
-              </Typography>
-              <Box mt={4}>
-                <Button
-                  variant="contained"
-                  size="medium"
-                  onClick={handleClickOpen}
-                >
-                  Contact
-                </Button>
-              </Box>
+          <Box>
+            <Fab onClick={handleClickOpen}>+</Fab>
+            <Container>
               <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>Contact Me</DialogTitle>
+                <DialogTitle>Blog Post</DialogTitle>
                 <DialogContent>
-                  <DialogContentText>
-                    Please provide your email address to be contacted
-                  </DialogContentText>
+                  <DialogContentText>Title</DialogContentText>
                   <TextField
                     autoFocus
+                    name="titleField"
                     margin="dense"
-                    id="name"
-                    label="Email Address"
-                    type="email"
+                    id="title"
+                    label="Title"
+                    type="headline"
                     fullWidth
                     variant="standard"
                   />
                 </DialogContent>
                 <DialogContent>
-                  <DialogContentText>
-                    And a message for the reason of your request
-                  </DialogContentText>
+                  <DialogContentText>Body</DialogContentText>
                   <TextField
                     autoFocus
                     margin="dense"
-                    id="name"
-                    label="Message"
-                    type="message"
+                    name="postBody"
+                    id="postBody"
+                    label="Body"
+                    type="postBody"
                     fullWidth
                     variant="standard"
                   />

@@ -15,24 +15,27 @@ import profilePicture from "../Assets/Profilepage.JPG";
 import Art from "./Art";
 import FormDialog from "./Contact";
 import Portfolio from "./Portfolio";
+import Resume from "./Resume";
 
 export default function HomePage() {
   return (
     <Container maxWidth="lg">
       <Stack mt={8} direction="row" justifyContent="center" alignItems="center">
-        <ImageList sx={{ width: 250, height: 500 }} cols={1} rowHeight={164}>
-          <ImageListItem>
-            <img
-              src={`${profilePicture}`}
-              srcSet={`${profilePicture}`}
-              alt={""}
-              loading="lazy"
-            />
-          </ImageListItem>
-        </ImageList>
+        <Box mt={4}>
+          <ImageList sx={{ width: 250, height: 500 }} cols={1} rowHeight={164}>
+            <ImageListItem>
+              <img
+                src={`${profilePicture}`}
+                srcSet={`${profilePicture}`}
+                alt={""}
+                loading="lazy"
+              />
+            </ImageListItem>
+          </ImageList>
+        </Box>
       </Stack>
       <Paper>
-        <Typography variant="h1">Welcome to The Bradley Project!</Typography>
+        <Typography variant="h2">Welcome to The Bradley Project!</Typography>
         <Container maxWidth={"md"}>
           <Typography variant="paragraph">
             Here at The Bradley Project website, you get a constant glimpse at
@@ -53,7 +56,7 @@ export default function HomePage() {
             next step in my career.
           </Typography>
         </Container>
-        <Typography variant="h3">
+        <Typography variant="h4">
           What does The Bradley Project Mean?
         </Typography>
         <Container maxWidth={"md"} mb={4}>
@@ -75,6 +78,7 @@ export default function HomePage() {
       </Paper>
       <Portfolio />
       <Art />
+      <Resume />
       <FormDialog />
     </Container>
   );

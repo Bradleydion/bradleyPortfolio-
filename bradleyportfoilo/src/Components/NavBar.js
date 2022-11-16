@@ -6,8 +6,13 @@ import { Container } from "@mui/system";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
+import AdminLogIn from "./AdminLogIn";
 
-const pages = [<Link to="/">Home</Link>, "Blog", "Admin Login"];
+const pages = [
+  <Link to="/">Home</Link>,
+  <Link to="/Blog">Blog</Link>,
+  <AdminLogIn />,
+];
 const theme = createTheme({
   palette: {
     primary: {
