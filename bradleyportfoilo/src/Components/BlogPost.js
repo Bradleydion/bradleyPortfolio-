@@ -7,15 +7,16 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Box, Stack } from "@mui/system";
-import { Container, Fab, Paper } from "@mui/material";
+import { Container, Fab, FormControl, Paper } from "@mui/material";
+import axios from "axios";
 
 export default function BlogPost() {
   const [open, setOpen] = React.useState(false);
-  const aPost = {
-    title: "",
-    body: "",
-  };
-  const [blogPost, setBlogPost] = React.useState(aPost);
+
+  const [blogPost, setBlogPost] = React.useState({
+    postTitle: "",
+    postBody: "",
+  });
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -24,46 +25,69 @@ export default function BlogPost() {
   const handleClose = () => {
     setOpen(false);
   };
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setBlogPost({ ...blogPost, [name]: value });
+  };
+
+  const handleBlogSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .post("http://localhost:6000/api/blog", blogPost)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    setOpen(false);
+  };
 
   return (
     <div>
       <Stack mt={8}>
         <Paper>
           <Box>
-            <Fab onClick={handleClickOpen}>+</Fab>
+            <Fab onClick={handleClickOpen} children="+" />
             <Container>
               <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>Blog Post</DialogTitle>
-                <DialogContent>
-                  <DialogContentText>Title</DialogContentText>
-                  <TextField
-                    autoFocus
-                    name="titleField"
-                    margin="dense"
-                    id="title"
-                    label="Title"
-                    type="headline"
-                    fullWidth
-                    variant="standard"
-                  />
-                </DialogContent>
-                <DialogContent>
-                  <DialogContentText>Body</DialogContentText>
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    name="postBody"
-                    id="postBody"
-                    label="Body"
-                    type="postBody"
-                    fullWidth
-                    variant="standard"
-                  />
-                </DialogContent>
-                <DialogActions>
-                  <Button onClick={handleClose}>Cancel</Button>
-                  <Button onClick={handleClose}>Submit</Button>
-                </DialogActions>
+                <FormControl onSubmit={handleBlogSubmit}>
+                  <DialogTitle>Blog Post</DialogTitle>
+                  <DialogContent>
+                    <DialogContentText>Title</DialogContentText>
+                    <TextField
+                      autoFocus
+                      name="postTitle"
+                      margin="dense"
+                      id="title"
+                      label="Title"
+                      type="text"
+                      value={blogPost.postTitle}
+                      onChange={handleInputChange}
+                      fullWidth
+                      variant="standard"
+                    />
+                  </DialogContent>
+                  <DialogContent>
+                    <DialogContentText>Body</DialogContentText>
+                    <TextField
+                      autoFocus
+                      margin="dense"
+                      name="postBody"
+                      id="postBody"
+                      label="Body"
+                      type="text"
+                      value={blogPost.postBody}
+                      onChange={handleInputChange}
+                      fullWidth
+                      variant="standard"
+                    />
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={handleClose}>Cancel</Button>
+                    <Button type="submit">Submit</Button>
+                  </DialogActions>
+                </FormControl>
               </Dialog>
             </Container>
           </Box>
